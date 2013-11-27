@@ -26,7 +26,8 @@ namespace EntertainmentTrackerPersonal
             bundles.Add(new ScriptBundle("~/bundles/jquerymobile").Include("~/Scripts/jquery.mobile*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css",
-                        "~/Content/bootstrap.css"));
+                        "~/Content/bootstrap.css",
+                        "~/Content/customStyles.css"));
 
             bundles.Add(new StyleBundle("~/Content/mobilecss").Include("~/Content/jquery.mobile*"));
 
