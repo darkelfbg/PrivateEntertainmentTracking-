@@ -16,7 +16,13 @@ namespace EntertainmentTrackerPersonal.Controllers
 
         public ActionResult Login()
         {
-            ViewBag.Message = "Login.";
+            ViewBag.Message = "Login.Page";
+
+            return View();
+        }
+        public ActionResult UserHome()
+        {
+            ViewBag.Message = "This Is the user Home Page";
 
             return View();
         }

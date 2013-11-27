@@ -125,6 +125,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AnimesController.cs" />
+    <Compile Include="Controllers\BooksController.cs" />
+    <Compile Include="Controllers\TVShowsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -133,6 +136,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\ajax-loader.png" />
     <Content Include="Content\images\icons-18-black.png" />
@@ -221,6 +225,7 @@
     <Content Include="libraries\System.Web.Providers.dll" />
     <Content Include="libraries\System.Web.Razor.dll" />
     <Content Include="libraries\WebGrease.dll" />
+    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
@@ -263,6 +268,16 @@
     <Content Include="Views\Home\Index.Tablet.cshtml" />
     <Content Include="Views\Home\Index.Phone.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Users\UserHome.cshtml" />
+    <Content Include="Views\Animes\Index.cshtml" />
+    <Content Include="Views\Books\Index.cshtml" />
+    <Content Include="Views\TVShows\Index.cshtml" />
+    <Content Include="Views\Animes\AddAnimes.cshtml" />
+    <Content Include="Views\Animes\AnimesLibrary.cshtml" />
+    <Content Include="Views\Books\AddBooks.cshtml" />
+    <Content Include="Views\Books\BooksLibrary.cshtml" />
+    <Content Include="Views\TVShows\AddTVShows.cshtml" />
+    <Content Include="Views\TVShows\TVShowsLibrary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
