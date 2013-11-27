@@ -28,5 +28,6 @@ namespace EntertainmentTrackerPersonal.Controllers
 
             return View();
         }
+       
     }
 }
