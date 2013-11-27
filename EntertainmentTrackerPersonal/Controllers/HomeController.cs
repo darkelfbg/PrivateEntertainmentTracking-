@@ -8,10 +8,14 @@ namespace EntertainmentTrackerPersonal.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Login()
+        {
+
+            return View();
+        }
+
         public ActionResult Index()
         {
-            ViewBag.Message = "This Message comes from the controlelr and i dont like it";
-
             return View();
         }
 
