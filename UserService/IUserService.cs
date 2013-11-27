@@ -1,47 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using System.Text;
 
 namespace UserService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface IUserService
     {
+        [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json
+            , ResponseFormat = WebMessageFormat.Json, UriTemplate = "?UserName={userName}")]
+        User GetUserCredentials(string userName);
 
         [OperationContract]
-        string GetData(int value);
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json
+            , ResponseFormat = WebMessageFormat.Json, UriTemplate = "CreateAccount")]
+        bool CreateAccount(User user);
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
-
-        // TODO: Add your service operations here
+        [WebInvoke(Method = "PUT", BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json
+            , ResponseFormat = WebMessageFormat.Json
+            , UriTemplate = "UpdateAccount")]
+        bool UpdateAccount(User user);
     }
 
-
-    // Use a data contract as illustrated in the sample below to add composite types to service operations.
     [DataContract]
-    public class CompositeType
+    public class User
     {
-        bool boolValue = true;
-        string stringValue = "Hello ";
+        public int UserId { get; set; }
 
         [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
+        public string UserName { get; set; }
 
         [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
+        public string Password { get; set; }
     }
 }
