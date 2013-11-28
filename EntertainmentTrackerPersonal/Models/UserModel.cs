@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using UserService;
 
-
 namespace EntertainmentTrackerPersonal.Models
 {
     public class UserModel

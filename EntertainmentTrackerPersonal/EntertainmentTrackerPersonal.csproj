@@ -110,8 +110,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="UserService">
-      <HintPath>..\UserService\obj\Debug\UserService.dll</HintPath>
+    <Reference Include="UserService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\UserService\bin\UserService.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>

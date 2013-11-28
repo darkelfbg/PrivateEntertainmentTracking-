@@ -10,8 +10,12 @@ namespace UserService.SqlHelpers
     public class SqlHelper
     {
         #region Private Variables
+
         private static string _connectionString = "Server=" + ConfigurationManager.AppSettings["Server"] + ";Database=" +
-            ConfigurationManager.AppSettings["Database"] + ";Integrated Security=" + ConfigurationManager.AppSettings["IntegratedSecurity"];
+                                                  ConfigurationManager.AppSettings["Database"] + ";User id=" +
+                                                  ConfigurationManager.AppSettings["User"] +
+                                                  ";Password=" + ConfigurationManager.AppSettings["Password"];
+
         private SqlConnection _connection = new SqlConnection(_connectionString);
         #endregion
 
@@ -40,16 +44,19 @@ namespace UserService.SqlHelpers
                     var reader = command.ExecuteReader();
                     reader.Read();
 
-                    user.UserId = (int)reader["UserID"];
-                    user.UserName = (string)reader["UserName"];
-                    user.Password = (string)reader["Password"];
+                    user.UserId = (int) reader["UserID"];
+                    user.UserName = (string) reader["UserName"];
+                    user.Password = (string) reader["Password"];
+                    user.RememberMe = (bool) reader["RememberMe"];
                 }
-
-                _connection.Close();
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+            finally
+            {
+                _connection.Close(); 
             }
 
             #endregion
@@ -64,7 +71,7 @@ namespace UserService.SqlHelpers
             bool result = true;
 
             #region SQL Insert Command String
-            string insertCommandString = "INSERT INTO UserInfo (UserName,Password) VALUES(@UserName,@Password)";
+            string insertCommandString = "INSERT INTO UserInfo (UserName,Password,RememberMe) VALUES(@UserName,@Password,@RememberMe)";
             #endregion
 
             #region Insert Into Database
@@ -76,18 +83,22 @@ namespace UserService.SqlHelpers
                 {
                     SqlParameter userNameParam = new SqlParameter("@UserName", user.UserName);
                     SqlParameter passwordParam = new SqlParameter("@Password", user.Password);
+                    SqlParameter rememberMeParam = new SqlParameter("@RememberMe", user.RememberMe);
 
                     insertCommand.Parameters.Add(userNameParam);
                     insertCommand.Parameters.Add(passwordParam);
+                    insertCommand.Parameters.Add(rememberMeParam);
 
                     insertCommand.ExecuteNonQuery();
-                }
-
-                _connection.Close();
+                }   
             }
             catch (Exception)
             {
                 result = false;
+            }
+            finally
+            {
+                _connection.Close();
             }
             #endregion
 
@@ -104,6 +115,7 @@ namespace UserService.SqlHelpers
             string updateSqlcommandString = "UPDATE UserInfo SET Username = @UserName,Password = @Password WHERE UserID = @UserId";
             #endregion
 
+            #region Updating Entry in Database
             try
             {
                 _connection.Open();
@@ -120,13 +132,17 @@ namespace UserService.SqlHelpers
 
                     updateCommand.ExecuteNonQuery();
                 }
-
-                _connection.Close();
             }
             catch (Exception)
             {
                 result = false;
             }
+            finally
+            {
+                _connection.Close();
+            }
+            #endregion
+
             return result;
         }
         #endregion

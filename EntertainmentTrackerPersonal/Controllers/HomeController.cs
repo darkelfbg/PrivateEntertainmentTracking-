@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UserService;
 
 namespace EntertainmentTrackerPersonal.Controllers
 {
     public class HomeController : Controller
     {
+        IUserService userService = new UserService.UserService();
+
         public ActionResult Login()
         {
 

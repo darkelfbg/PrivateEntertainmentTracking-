@@ -34,5 +34,8 @@ namespace UserService
 
         [DataMember]
         public string Password { get; set; }
+
+        [DataMember]
+        public bool RememberMe { get; set; }
     }
 }
