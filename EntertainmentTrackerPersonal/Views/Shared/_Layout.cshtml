@@ -20,7 +20,11 @@
                     </section>
                     <nav class="navbar navbar-default" role="navigation">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="#">@Html.ActionLink("your logo here", "Index", "Home")</a>
+                            <a class="navbar-brand" href='@Url.Action("Index", "Home")'>
+                                <img src='@Url.Content("~/Images/logos/pLogo.jpg")' />
+                            </a>
+                            
+                          
                         </div>
                         <ul id="menu"  class="nav navbar-nav">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
