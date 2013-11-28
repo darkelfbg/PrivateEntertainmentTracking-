@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Configuration;
 using System.Web.Mvc;
 using System.Web.Security;
 using EntertainmentTrackerPersonal.Models;
@@ -17,11 +18,11 @@ namespace EntertainmentTrackerPersonal.Controllers
         [HttpPost]
         public ActionResult Login(UserModel userModel)
         {
-            string requestUrl = "http://193.178.152.188:9090/UserService.svc/?UserName=" + userModel.UserName;
+            string requestUrl = ConfigurationManager.AppSettings["RequestUrl"] + userModel.UserName;
 
             User user = _webHelper.GetUserData(requestUrl, "GET");
 
-            if (userModel.IsValid(user))
+            if ((user != null) && userModel.IsValid(user))
             {
                 FormsAuthentication.SetAuthCookie(userModel.UserName, userModel.RememberMe);
                 return RedirectToAction("Index", "Home");

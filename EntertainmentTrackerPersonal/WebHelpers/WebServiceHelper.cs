@@ -14,7 +14,7 @@ namespace EntertainmentTrackerPersonal.WebHelpers
     public class WebServiceHelper
     {
         private WebRequest _webRequest;
-        private HttpResponse _httpResponse;
+        private HttpWebResponse _httpResponse;
         private StreamReader _streamReader;
 
         public User GetUserData(string requestUrl, string method)
@@ -27,7 +27,7 @@ namespace EntertainmentTrackerPersonal.WebHelpers
                 _webRequest.Method = method;
 
                 _webRequest.ContentType = @"application/json; charset=utf-8";
-                HttpWebResponse _httpResponse = (HttpWebResponse)_webRequest.GetResponse();
+                _httpResponse = (HttpWebResponse)_webRequest.GetResponse();
 
                 Encoding encoding = Encoding.GetEncoding("utf-8");
 
