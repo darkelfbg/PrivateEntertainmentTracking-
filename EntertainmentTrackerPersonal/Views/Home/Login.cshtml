@@ -1,12 +1,6 @@
 ﻿@model EntertainmentTrackerPersonal.Models.UserModel
 
-@if (@User.Identity.IsAuthenticated)
-{
-  @Html.Action("UserHome","Users")
-}
-else
-{
-    using(Html.BeginForm("Login","Home",FormMethod.Post,new {@class="form-horizontal"}))
+    @using(Html.BeginForm("Login","Home",FormMethod.Post,new {@class="form-horizontal"}))
      {
          <div class="well row">
           
@@ -40,4 +34,4 @@ else
          </div>
      }
     @Styles.Render("~/Content/css")
-}
+

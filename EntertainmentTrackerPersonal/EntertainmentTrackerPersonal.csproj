@@ -269,7 +269,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.Tablet.cshtml" />
     <Content Include="Views\Home\Index.Phone.cshtml" />
-    <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Users\UserHome.cshtml" />
     <Content Include="Views\Animes\Index.cshtml" />
     <Content Include="Views\Books\Index.cshtml" />
@@ -280,7 +279,6 @@
     <Content Include="Views\Books\BooksLibrary.cshtml" />
     <Content Include="Views\TVShows\AddTVShows.cshtml" />
     <Content Include="Views\TVShows\TVShowsLibrary.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

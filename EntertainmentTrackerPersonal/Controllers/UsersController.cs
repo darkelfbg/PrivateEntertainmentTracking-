@@ -12,19 +12,16 @@ namespace EntertainmentTrackerPersonal.Controllers
 
     public class UsersController : Controller
     {
-        
-
-        public ActionResult Login()
-        {
-            ViewBag.Message = "Login.Page";
-
-            return View();
-        }
         public ActionResult UserHome()
         {
-            ViewBag.Message = "This Is the user Home Page";
+            if(User.Identity.IsAuthenticated)
+            {
+                ViewBag.Message = "This Is the user Home Page";
 
-            return View();
+                return View();
+            }
+
+            return RedirectToAction("Login", "Home");
         }
 
        
