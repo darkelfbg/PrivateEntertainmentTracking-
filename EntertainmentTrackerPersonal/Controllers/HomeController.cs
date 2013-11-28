@@ -3,17 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using EntertainmentTrackerPersonal.Models;
+using EntertainmentTrackerPersonal.WebHelpers;
 using UserService;
 
 namespace EntertainmentTrackerPersonal.Controllers
 {
     public class HomeController : Controller
     {
-        IUserService userService = new UserService.UserService();
+        WebServiceHelper _webHelper = new WebServiceHelper();
+
+        [HttpPost]
+        public ActionResult Login(UserModel userModel)
+        {
+            string requestUrl = "http://193.178.152.188:9090/UserService.svc/?UserName=" + userModel.UserName;
+
+            User user = _webHelper.GetUserData(requestUrl, "GET");
+
+            if (userModel.IsValid(user))
+            {
+                FormsAuthentication.SetAuthCookie(userModel.UserName, userModel.RememberMe);
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View();
+        }
 
         public ActionResult Login()
         {
-
             return View();
         }
 

@@ -9,6 +9,8 @@ namespace EntertainmentTrackerPersonal.Models
 {
     public class UserModel
     {
+        public int Id { get; set;}
+
         [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }
@@ -21,9 +23,9 @@ namespace EntertainmentTrackerPersonal.Models
         [Display(Name = "Remember on this computer")]
         public bool RememberMe { get; set; }
 
-        public bool IsValid(string userName, string password,User user)
+        public bool IsValid(User user)
         {
-            return (userName == user.UserName) && (password == user.Password);
+            return (this.UserName == user.UserName) && (this.Password == user.Password);
         }
     }
 }
