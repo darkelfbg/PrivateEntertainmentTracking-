@@ -1,22 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Text;
-using System.Web;
-using EntertainmentTrackerPersonal.Models;
 using UserService;
 
 namespace EntertainmentTrackerPersonal.WebHelpers
 {
     public class WebServiceHelper
     {
+        #region Private Variables
         private WebRequest _webRequest;
         private HttpWebResponse _httpResponse;
         private StreamReader _streamReader;
+        #endregion
 
+        #region Public Methods
+
+        #region GetUserData Method
         public User GetUserData(string requestUrl, string method)
         {
             User user = new User();
@@ -55,5 +56,8 @@ namespace EntertainmentTrackerPersonal.WebHelpers
 
             return user;
         }
+        #endregion
+
+        #endregion
     }
 }

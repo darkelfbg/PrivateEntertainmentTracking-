@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Web.Mvc;
 using System.Web.Security;
 using EntertainmentTrackerPersonal.Models;
