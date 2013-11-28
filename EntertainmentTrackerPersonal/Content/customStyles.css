@@ -1,5 +1,9 @@
 ﻿.mainTitle {
-    color: #d9c483;
+    color: #d5a100;
 
+
+}
+.navbar-default .navbar-nav > li > a  {
+    color: #d9c483;
 
 }
