@@ -2,7 +2,7 @@
 
 @if (@User.Identity.IsAuthenticated)
 {
-  @Html.Action("Index","Home")
+  @Html.Action("UserHome","Users")
 }
 else
 {
@@ -39,10 +39,5 @@ else
            </form>
          </div>
      }
-        
-            
-
-    
-    
     @Styles.Render("~/Content/css")
 }
