@@ -23,8 +23,6 @@ namespace EntertainmentTrackerPersonal.Controllers
 
             return RedirectToAction("Login", "Home");
         }
-
-       
     }
 }
 

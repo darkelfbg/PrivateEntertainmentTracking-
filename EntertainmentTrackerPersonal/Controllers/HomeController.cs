@@ -16,7 +16,7 @@ namespace EntertainmentTrackerPersonal.Controllers
         {
             string requestUrl = ConfigurationManager.AppSettings["RequestUrlForGet"] + userModel.UserName;
 
-            User user = _webHelper.GetUserData(requestUrl, "GET");
+            User user = _webHelper.GetUserData(requestUrl);
 
             if ((user != null) && userModel.IsValid(user))
             {
