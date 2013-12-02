@@ -11,8 +11,6 @@ namespace EntertainmentTrackerPersonal.WebHelpers
     {
         #region Private Variables
         private WebRequest _webRequest;
-        private HttpWebResponse _httpResponse;
-        private StreamReader _streamReader;
         private Stream _requestStream;
         #endregion
 
@@ -21,38 +19,6 @@ namespace EntertainmentTrackerPersonal.WebHelpers
         #region GetUserData Method
         public AuthenticationStatusCode GetUserData(string requestUrl,User user)
         {
-
-            //string url = "http://193.178.152.188:9090/UserService.svc/GetUser";
-            ////string dataToPost = "{\"Password\":\"pavel\",\"RememberMe\":false,\"UserName\":\"Rado\"}";
-            //string dataToPost  = "{\"Password\":\"" + user.Password + "\",\"RememberMe\":" +
-            //                      user.RememberMe + ",\"UserName\":\"" + user.UserName + "\"}";
-            //byte[] byteData = Encoding.UTF8.GetBytes(dataToPost);
-
-            //WebRequest webPost = WebRequest.Create(url);
-            //webPost.Method = "POST";
-            //webPost.ContentType = @"application/json; charset=utf-8";
-            //webPost.ContentLength = byteData.Length;
-            //Stream requestStream = webPost.GetRequestStream();
-
-            //requestStream.Write(byteData, 0, byteData.Length);
-
-            //requestStream.Close();
-
-            //var response = (HttpWebResponse)webPost.GetResponse();
-
-            //Encoding encoding = Encoding.GetEncoding("utf-8");
-            //StreamReader streamReader = new StreamReader(response.GetResponseStream(), encoding);
-            //var result = Int32.Parse(streamReader.ReadToEnd());
-
-            //response.Close();
-
-            //switch (result)
-            //{
-            //    case 0: return AuthenticationStatusCode.Ok;
-            //    case 1: return AuthenticationStatusCode.WrongUserName;
-            //    case 2: return AuthenticationStatusCode.WrongPassword;
-            //    default: return AuthenticationStatusCode.Unknown;
-            //}
             int result;
 
             try
