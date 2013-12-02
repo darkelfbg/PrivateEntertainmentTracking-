@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
+using DataObjects;
 
 namespace UserService.SqlHelpers
 {
@@ -21,10 +22,10 @@ namespace UserService.SqlHelpers
         #region GetUser Method
         public User GetUser(string userName)
         {
-            User user = new User();
+            var user = new User();
 
             #region SQl command string
-            string commandString = "SELECT * FROM UserInfo WHERE UserName = @UserName";
+            const string commandString = "SELECT * FROM UserInfo WHERE UserName = @UserName";
             #endregion
 
             #region Read from DB
@@ -33,9 +34,9 @@ namespace UserService.SqlHelpers
             {
                 _connection.Open();
 
-                using (SqlCommand command = new SqlCommand(commandString, _connection))
+                using (var command = new SqlCommand(commandString, _connection))
                 {
-                    SqlParameter userNameParam = new SqlParameter("@UserName", userName);
+                    var userNameParam = new SqlParameter("@UserName", userName);
                     command.Parameters.Add(userNameParam);
 
                     var reader = command.ExecuteReader();
@@ -47,9 +48,9 @@ namespace UserService.SqlHelpers
                     user.RememberMe = (bool) reader["RememberMe"];
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception(ex.Message);
+                return null;
             }
             finally
             {

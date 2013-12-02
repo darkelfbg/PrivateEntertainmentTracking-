@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntertainmentTrackerPersona
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "UserService\UserService.csproj", "{5ADB35C1-048C-4696-9FE1-85B3FC1D5D6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataObjects", "DataObjects\DataObjects.csproj", "{86F72C2A-5834-47BE-BE88-9C3D38EF0421}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{5ADB35C1-048C-4696-9FE1-85B3FC1D5D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ADB35C1-048C-4696-9FE1-85B3FC1D5D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ADB35C1-048C-4696-9FE1-85B3FC1D5D6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86F72C2A-5834-47BE-BE88-9C3D38EF0421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86F72C2A-5834-47BE-BE88-9C3D38EF0421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86F72C2A-5834-47BE-BE88-9C3D38EF0421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86F72C2A-5834-47BE-BE88-9C3D38EF0421}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

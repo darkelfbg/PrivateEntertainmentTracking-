@@ -1,4 +1,5 @@
 ﻿using System;
+using DataObjects;
 using UserService.SqlHelpers;
 
 namespace UserService
@@ -12,34 +13,63 @@ namespace UserService
         #region IUserService Implementation
 
         #region GetUserCredentials Method
-        public User GetUserCredentials(string userName)
+        public AuthenticationStatusCode GetUserCredentials(User user)
         {
             User currentUser = new User();
 
             try
             {
-                currentUser = _sqlHelper.GetUser(userName);
+                currentUser = _sqlHelper.GetUser(user.UserName);
+
+                if (currentUser.UserName != user.UserName)
+                {
+                    return AuthenticationStatusCode.WrongUserName;
+                }
+                if (currentUser.Password != user.Password)
+                {
+                    return AuthenticationStatusCode.WrongPassword;
+                }
+
+                return AuthenticationStatusCode.Ok;
             }
             catch (Exception)
             {
-                throw new Exception("SqlHelper threw an Exception!!!");
+                return AuthenticationStatusCode.Unknown;
             }
-
-            return currentUser;
         }
         #endregion
 
         #region CreateAccount Method
-        public bool CreateAccount(User user)
+        public AuthenticationStatusCode CreateAccount(User user)
         {
-            return _sqlHelper.CreateUser(user);
+            try
+            {
+                _sqlHelper.CreateUser(user);
+            }
+            catch (Exception)
+            {
+                return AuthenticationStatusCode.Unknown;
+            }
+
+            return AuthenticationStatusCode.Ok;
+               
         }
         #endregion
 
         #region UpdateUser Method
-        public bool UpdateAccount(User user)
+        public AuthenticationStatusCode UpdateAccount(User user)
         {
-            return _sqlHelper.UpdateUser(user);
+            try
+            {
+                _sqlHelper.UpdateUser(user);
+            }
+            catch (Exception)
+            {
+                return AuthenticationStatusCode.Unknown;
+            }
+            
+            return AuthenticationStatusCode.Ok;
+
         }
         #endregion
 

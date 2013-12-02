@@ -1,9 +1,9 @@
 ﻿using System.Configuration;
 using System.Web.Mvc;
 using System.Web.Security;
-using EntertainmentTrackerPersonal.Models;
+using DataObjects;
 using EntertainmentTrackerPersonal.WebHelpers;
-using UserService;
+using WebMatrix.WebData;
 
 namespace EntertainmentTrackerPersonal.Controllers
 {
@@ -12,16 +12,16 @@ namespace EntertainmentTrackerPersonal.Controllers
         WebServiceHelper _webHelper = new WebServiceHelper();
 
         [HttpPost]
-        public ActionResult Login(UserModel userModel)
+        public ActionResult Login(User userModel)
         {
-            string requestUrl = ConfigurationManager.AppSettings["RequestUrlForGet"] + userModel.UserName;
+            string requestUrl = ConfigurationManager.AppSettings["RequestUrlForGet"];
 
-            User user = _webHelper.GetUserData(requestUrl);
+            var status = _webHelper.GetUserData(requestUrl,userModel);
 
-            if ((user != null) && userModel.IsValid(user))
+            if (status == AuthenticationStatusCode.Ok)
             {
-                FormsAuthentication.SetAuthCookie(userModel.UserName, userModel.RememberMe);
-                return RedirectToAction("UserHome", "Users");
+                    FormsAuthentication.SetAuthCookie(userModel.UserName, userModel.RememberMe);
+                    return RedirectToAction("UserHome", "Users");
             }
 
             return View();
