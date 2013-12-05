@@ -17,7 +17,7 @@ namespace EntertainmentTrackerPersonal.WebHelpers
         #region Public Methods
 
         #region GetUserData Method
-        public AuthenticationStatusCode GetUserData(string requestUrl,User user)
+        public UserServiceStatusCode GetUserData(string requestUrl,User user)
         {
             int result;
 
@@ -34,24 +34,29 @@ namespace EntertainmentTrackerPersonal.WebHelpers
                 _webRequest.Method = "POST";
                 _webRequest.ContentType = @"application/json; charset=utf-8";
                 _webRequest.ContentLength = byteDataToSend.Length;
-                Stream requestStream = _webRequest.GetRequestStream();
 
-                requestStream.Write(byteDataToSend, 0, byteDataToSend.Length);
-
-                requestStream.Close();
+                _requestStream = _webRequest.GetRequestStream();
+                _requestStream.Write(byteDataToSend, 0, byteDataToSend.Length);
+                _requestStream.Close();
 
                 var response = (HttpWebResponse)_webRequest.GetResponse();
 
                 Encoding encoding = Encoding.GetEncoding("utf-8");
                 StreamReader streamReader = new StreamReader(response.GetResponseStream(), encoding);
+
                 result = Int32.Parse(streamReader.ReadToEnd());
+
+                if (streamReader != null)
+                {
+                    streamReader.Close();
+                }
 
                 response.Close();
 
             }
             catch (Exception)
             {
-                return AuthenticationStatusCode.Unknown;
+                return UserServiceStatusCode.Unknown;
             }
             finally
             {
@@ -62,16 +67,16 @@ namespace EntertainmentTrackerPersonal.WebHelpers
             }
             switch (result)
             {
-                case 0: return AuthenticationStatusCode.Ok;
-                case 1: return AuthenticationStatusCode.WrongUserName;
-                case 2: return AuthenticationStatusCode.WrongPassword;
-                default: return AuthenticationStatusCode.Unknown;
+                case 0: return UserServiceStatusCode.Ok;
+                case 1: return UserServiceStatusCode.WrongUserName;
+                case 2: return UserServiceStatusCode.WrongPassword;
+                default: return UserServiceStatusCode.Unknown;
             }
         }
         #endregion
 
         #region RegisterUser Method
-        public AuthenticationStatusCode RegisterUser(string requestUrl,User user)
+        public UserServiceStatusCode RegisterUser(string requestUrl,User user)
         {
             try
             {
@@ -91,7 +96,7 @@ namespace EntertainmentTrackerPersonal.WebHelpers
             }
             catch (Exception)
             {
-                return AuthenticationStatusCode.Unknown;
+                return UserServiceStatusCode.Unknown;
             }
             finally
             {
@@ -101,7 +106,7 @@ namespace EntertainmentTrackerPersonal.WebHelpers
                 }
             }
 
-               return AuthenticationStatusCode.Ok;
+               return UserServiceStatusCode.Ok;
         }
         #endregion
 

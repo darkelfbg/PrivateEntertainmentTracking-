@@ -18,7 +18,7 @@ namespace EntertainmentTrackerPersonal.Controllers
 
             var status = _webHelper.GetUserData(requestUrl,userModel);
 
-            if (status == AuthenticationStatusCode.Ok)
+            if (status == UserServiceStatusCode.Ok)
             {
                     FormsAuthentication.SetAuthCookie(userModel.UserName, userModel.RememberMe);
                     return RedirectToAction("UserHome", "Users");

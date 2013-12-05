@@ -11,17 +11,17 @@ namespace UserService
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json
             , ResponseFormat = WebMessageFormat.Json, UriTemplate = "GetUser")]
-        AuthenticationStatusCode GetUserCredentials(User user);
+        UserServiceStatusCode GetUserCredentials(User user);
 
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json
             , ResponseFormat = WebMessageFormat.Json, UriTemplate = "CreateAccount")]
-        AuthenticationStatusCode CreateAccount(User user);
+        UserServiceStatusCode CreateAccount(User user);
 
         [OperationContract]
         [WebInvoke(Method = "PUT", BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json
             , ResponseFormat = WebMessageFormat.Json
             , UriTemplate = "UpdateAccount")]
-        AuthenticationStatusCode UpdateAccount(User user);
+        UserServiceStatusCode UpdateAccount(User user);
     }
 }

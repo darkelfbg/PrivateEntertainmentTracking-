@@ -13,7 +13,7 @@ namespace UserService
         #region IUserService Implementation
 
         #region GetUserCredentials Method
-        public AuthenticationStatusCode GetUserCredentials(User user)
+        public UserServiceStatusCode GetUserCredentials(User user)
         {
             User currentUser = new User();
 
@@ -23,24 +23,24 @@ namespace UserService
 
                 if (currentUser.UserName != user.UserName)
                 {
-                    return AuthenticationStatusCode.WrongUserName;
+                    return UserServiceStatusCode.WrongUserName;
                 }
                 if (currentUser.Password != user.Password)
                 {
-                    return AuthenticationStatusCode.WrongPassword;
+                    return UserServiceStatusCode.WrongPassword;
                 }
 
-                return AuthenticationStatusCode.Ok;
+                return UserServiceStatusCode.Ok;
             }
             catch (Exception)
             {
-                return AuthenticationStatusCode.Unknown;
+                return UserServiceStatusCode.Unknown;
             }
         }
         #endregion
 
         #region CreateAccount Method
-        public AuthenticationStatusCode CreateAccount(User user)
+        public UserServiceStatusCode CreateAccount(User user)
         {
             try
             {
@@ -48,16 +48,16 @@ namespace UserService
             }
             catch (Exception)
             {
-                return AuthenticationStatusCode.Unknown;
+                return UserServiceStatusCode.Unknown;
             }
 
-            return AuthenticationStatusCode.Ok;
+            return UserServiceStatusCode.Ok;
                
         }
         #endregion
 
         #region UpdateUser Method
-        public AuthenticationStatusCode UpdateAccount(User user)
+        public UserServiceStatusCode UpdateAccount(User user)
         {
             try
             {
@@ -65,10 +65,10 @@ namespace UserService
             }
             catch (Exception)
             {
-                return AuthenticationStatusCode.Unknown;
+                return UserServiceStatusCode.Unknown;
             }
             
-            return AuthenticationStatusCode.Ok;
+            return UserServiceStatusCode.Ok;
 
         }
         #endregion
